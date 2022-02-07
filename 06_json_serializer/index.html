@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Serializer</title>
+</head>
+
+<body>
+    <script>
+
+        var person = {};
+        person.id = 34;
+        person.firstName = "Ben";
+        person.lastName = "Lord";
+        person.address = {};
+        person.address.street = "Bos En Lommerweg 65";
+        person.address.zipCode = "1008 AG";
+        person.address.city = "Amsterdam";
+
+        /*person.address.toJSON = function (name) {
+            return {
+                street: this.street,
+                zip_code: this.zipCode
+            }
+        }*/
+        person.adult = true;
+
+        person.showInfo = function () {
+            return firstName + " " + lastName;
+        }
+
+        /*person.toJSON = function (name) {
+            return {
+                first_name: this.firstName,
+                last_name: this.lastName,
+                address: this.address
+            }
+        }*/
+
+        /*function replacer (key, value) {
+            if (key ==='id') {
+                return undefined;
+            } else if (key === 'adult') {
+                return (value ===true)? "yes": "no";
+            }
+            return value;
+        }*/
+
+        //var replacer = ["first_name", "last_name", "address", "street"];
+
+
+        /*var json = JSON.stringify(person, replacer);
+        console.log(json);*/
+
+        /*var json = JSON.stringify(person);
+        console.log(json);*/
+
+        //za ulvacenje
+        /*var json = JSON.stringify(person, null, 6);
+        console.log(json);*/
+
+        //za def tabulatora
+
+        /*var json = JSON.stringify(person, null, "\t");
+        console.log(json);*/
+
+        /*var json = JSON.stringify([13, 14, 56.67]);
+         console.log(json);*/
+
+        /*var json = JSON.stringify(function() {
+
+         });
+         console.log(json);*/
+
+        /*var json = JSON.stringify(new Date ());
+        console.log(json);*/
+
+        //Cirkularno referenciranje
+        var person = {};
+        person.name = "Ben";
+
+        var dog = {};
+        dog.name = "Jackie";
+
+        person.dog = dog;
+        //dog.owner = person;
+
+        var json = JSON.stringify(person);
+
+
+    </script>
+</body>
+
+</html>
